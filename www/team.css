@@ -1,0 +1,48 @@
+.title {
+  float: left;
+  padding-left: 40px;
+  text-align: justify;
+}
+
+.main_info {
+    margin-top: 50px;
+}
+
+.profile_header {
+    /*text-align: center;*/
+    position: relative;
+}
+.profile_header .profile_header_img {
+    width: 100%;
+    position: relative;
+
+    /*object-fit: contain;*/
+}
+
+.profile_header .name {
+    /*display: inline-block;
+    text-align: left;*/
+    height: 20px;
+    line-height: 20px;
+    padding-left: 35px;
+    position: absolute;
+    top: 40%;
+    left: 10px;
+    font-weight: bold;
+    font-size: 18px;
+}
+
+.profile_bio {
+    padding-left: 40px;
+    padding-top: 15px;
+    padding-right: 20px;
+}
+
+.profile_bio p {
+    font-size: 14px;
+}
+
+.profile_bio ul.a {
+    list-style-type: square; /*list-style-type: circle;*/
+    font-size: 14px;
+}

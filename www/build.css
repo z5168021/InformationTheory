@@ -1,0 +1,60 @@
+.build_header {
+  display:inline-block; 
+  vertical-align:top;
+  padding-left: 30px;
+}
+
+.right button {
+  float:right;
+}
+.build_pop {
+  background-color: #EEEEEE;
+  border: 1px solid #DDDDDD;
+  border-radius:8px;
+  margin:15px;
+  display:inline-block;
+  vertical-align:top;
+  padding: 30px;
+}
+
+.build_pop button {
+  float:right;
+
+}
+
+i{
+  padding-top:5px;
+  padding-bottom:5px;
+  padding-right:7px;
+}
+
+.build_pop input[type=number]{
+  max-width:160px;
+  padding:10px;
+  border-radius:8px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+
+.build_pop input[type=text]{
+  margin-left:20px;
+  padding:10px;
+  border-radius:8px;
+  box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+
+}
+
+.form-group shiny-input-container{
+  object-position: left;
+}
+
+.input_container .form-group{
+  margin-left: 30px;
+}
+
+.build_title{
+  padding-left: 30px;
+}
+
+/*#filename {
+  object-position: left;
+}*/

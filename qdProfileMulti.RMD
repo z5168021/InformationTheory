@@ -1,0 +1,70 @@
+---
+title: "qdProfileMulti"
+output: html_document
+params:
+  type: ''
+  profiles: ''
+  table: ''
+  graph: ''
+  data: ''
+  mode: '' 
+  
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+library(DT)
+library(rlist)
+```
+```{r echo = FALSE}
+ withMathJax(
+      tags$h2("Method and equations used"),
+      helpText('The method employed uses \\(^qD\\)-value as a measure of genetic diversity and  
+        further uses multiple \\(^qD\\)-values to reflect differences between rare or common variants.
+        The \\(^qD\\)-value graphically compared form the q-profile and this representation is most 
+        informative measure. ((W.B. Sherwin, A. Chao, L.Jost, P.E. Smouse,(2017), pg 7)'),
+      helpText('To produce q-profiles, we require sample data for alleles.These samples 
+               will be used to calculate the values for entropy qH and their number equivalents in \\(^qD\\).
+               These equations can be used to provide a rich summary of diversity.(W.B. Sherwin, et al,(2017)pg 5)'),
+      helpText('The equations for calculating Entropy \\(^qH\\) are:'),
+      helpText('$$^0H=S-1$$'),
+      helpText('$$^1H=-\\sum_{i=1}^Sp_ilnp_i$$'),
+      helpText('$$^2H=1-\\sum_{i=1}^Sp_i^2$$'),
+      helpText('where \\(S\\) is the number of alleles and \\(p_i\\) is the allelic proprotion for \\(A\\), \\(C\\), \\(G\\) or \\(T\\)'),
+      helpText('The equations for calculating their equivalents in \\(^qD\\) are:'),
+      helpText('$$^0D=S$$'),
+      helpText('$$^1D=e^{1_H}$$'),
+      helpText('$$^2D=1/(1-{^2H})$$')
+    )
+```
+
+
+
+```{r, echo = FALSE}
+if(params$table == TRUE){
+  if(params$type == 'haplotypes'){
+    Filenames<- params$profiles[,1]
+    profile_list <-cbind(Filenames, params$data)
+    knitr::kable(profile_list, format="markdown")
+  } else {
+    knitr::kable(params$profiles[], format="markdown")
+  }
+}
+
+if(params$graph == TRUE){
+  
+  num <- nrow(params$data)
+  if (num < 3) num = 3
+  cols <- brewer.pal(num, "BuGn")
+  lim = max(params$data) +2
+  ylim <- c(0,lim)
+  
+  barplot(data.matrix(params$data), col = cols, beside = TRUE, ylim = ylim)
+  legend('topright', legend = profiles[,1], fill = cols)
+  
+  
+}
+
+```
+

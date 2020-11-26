@@ -1,0 +1,70 @@
+---
+title: "qdProfile"
+output: html_document
+params: 
+  data: ''
+  mode: ''
+  graph: ''
+  pop: FALSE
+  seq: ''
+  count: ''
+  cols: ''
+  
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+
+```
+```{r echo = FALSE}
+withMathJax(
+    tags$h2("Method and equations used"),
+    helpText('The method employed uses \\(^qD\\)-value as a measure of genetic diversity and  
+      further uses multiple \\(^qD\\)-values to reflect differences between rare or common variants.
+      The \\(^qD\\)-value graphically compared form the q-profile and this representation is most 
+      informative measure. ((W.B. Sherwin, A. Chao, L.Jost, P.E. Smouse,(2017), pg 7)'),
+    helpText('To produce q-profiles, we require sample data for alleles.These samples 
+             will be used to calculate the values for entropy qH and their number equivalents in \\(^qD\\).
+             These equations can be used to provide a rich summary of diversity.(W.B. Sherwin, et al,(2017)pg 5)'),
+    helpText('The equations for calculating Entropy \\(^qH\\) are:'),
+    helpText('$$^0H=S-1$$'),
+    helpText('$$^1H=-\\sum_{i=1}^Sp_ilnp_i$$'),
+    helpText('$$^2H=1-\\sum_{i=1}^Sp_i^2$$'),
+    helpText('where \\(S\\) is the number of alleles and \\(p_i\\) is the allelic proprotion for \\(A\\), \\(C\\), \\(G\\) or \\(T\\)'),
+    helpText('The equations for calculating their equivalents in \\(^qD\\) are:'),
+    helpText('$$^0D=S$$'),
+    helpText('$$^1D=e^{1_H}$$'),
+    helpText('$$^2D=1/(1-{^2H})$$'),
+    h2('Results')
+  )
+profiles = c('q=0', 'q=1', 'q=2')
+
+
+
+```
+
+```{r echo = FALSE}
+if(params$pop == TRUE){
+  if(params$mode == 'SNP_single'){
+    lim=max(params$count) + 4
+    ylim = c(0,lim)
+    xx<- barplot(params$count, names= c('A','C','G','T'), ylim=ylim, xlab = "Base", ylab = "Count", main = "Nucleotide Distribution", col = cols)
+    text(x = xx, y = params$count, label = params$count, pos = 3, cex = 0.8, col = "red")
+  }else {
+    titlePanel("The population")
+    xx<-barplot(params$count, names= params$seq, xlab = "Sequence", ylab = "Count",   main = "Haplotype Distribution", col = cols)
+    text(x = xx, y = params$count, label = params$count, pos = 3, cex = 0.8, col = "red")
+  }
+}
+
+cat(paste0('q=0 = ', params$data[1], '\nq=1 = ', params$data[2],'\nq=2 = ', params$data[3]))
+
+if(params$graph ==TRUE){
+    lim = max(as.numeric(params$data))+1
+    ylim = c(0,lim)
+   qd <- barplot(as.numeric(params$data), names.arg = profiles, main = 'qd Profile', ylim=ylim, col = cols)
+   text(x = qd, y= as.numeric(params$data), label = as.numeric(params$data), pos =3, cex = 0.8)
+  
+}
+
+```

@@ -1,0 +1,12 @@
+name: learningEE
+title: learningEE
+username:
+account: evolutionaryecology
+server: shinyapps.io
+hostUrl: https://api.shinyapps.io/v1
+appId: 3255810
+bundleId: 3882581
+url: https://evolutionaryecology.shinyapps.io/learningEE/
+when: 1605827393.72139
+asMultiple: FALSE
+asStatic: FALSE

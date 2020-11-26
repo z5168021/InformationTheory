@@ -1,0 +1,47 @@
+---
+title: "Result"
+output: html_document
+params:
+  graph: FALSE
+  info: ""
+  t: ""
+  y: ""
+  pop: FALSE
+  values: ""
+  names: ""
+  cols: ""
+---
+
+```{r include = FALSE}
+library(ggplot2)
+library(RColorBrewer)
+library(knitr)
+```
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+tinytex:::tweak_path()
+
+```
+
+
+```{r echo = FALSE}
+withMathJax(
+  helpText('The Shan-Het equation is:'),
+  helpText('$$^1H_t = ^1H_0(1 - \\frac{1}{2 \\times N_e})^t$$'),
+  helpText('where \\(^1H_0\\) is base shannon entropy, \\(N_e\\) is 
+           the population size and \\(t\\) is the number of generations'),
+  helpText('This equation can be used to asses the change in genetic information
+           over time.')
+)
+
+print(params$info)
+if(params$pop == TRUE){
+  titlePanel("The population")
+  barplot(values, names= seqs, xlab = "Sequence", ylab = "Count",
+                  main = "Population Genotypes", col = cols)}
+if(params$graph ==TRUE){
+  titlePanel("hello")
+  plot(params$t,params$y, xlab = "Generations", ylab = "Shan-Het value")
+}
+
+```

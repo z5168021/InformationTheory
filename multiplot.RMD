@@ -1,0 +1,54 @@
+---
+title: "multiview"
+output: pdf_document
+params:
+  profiles: ''
+  t: ''
+  table: FALSE
+  graph: FALSE
+  shan_values: ''
+---
+
+```{r setup, include=FALSE}
+library(DT)
+library(rlist)
+
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r echo = FALSE}
+withMathJax(
+      helpText('The Shan-Het equation is:'),
+      helpText('$$^1H_t = ^1H_0(1 - \\frac{1}{2 \\times N_e})^t$$'),
+      helpText('where \\(^1H_0=-\\sum_{i}^s{p_i ln (p_i)}\\) is base shannon entropy, \\(N_e\\) is 
+           the population size and \\(t\\) is the number of generations'),
+      helpText('This equation can be used to asses the change in genetic information
+           over time.')
+    )
+```
+
+
+```{r echo=FALSE}
+if(params$table == TRUE){
+  knitr::kable(params$profiles[,c("file", "t", "Ne", "shan")], format="markdown")
+}
+if(params$graph == TRUE){
+  num <- nrow(shan_values)
+  if (num < 3) num = 3
+  cols <- brewer.pal(num, "BuGn")
+  multi_plot <- plot(x = t, y = unlist(params$shan_values[1,]),type = 'o',col = 'blue', xlab = "Generations", ylab = "Shan-het Value", main = 'Change in Shannon Entropy Over Time')
+  names <- list(paste0(params$profiles[1,"file"], " where Ne = ", params$profiles[1, "Ne"]))
+  row <-2
+  
+  while(row <= nrow(shan_values)){
+    lines(x = t, y = unlist(params$shan_values[row,]), col = cols[row], type = 'o')
+    names <- list.append(names, paste0(params$profiles[row,"file"], " where Ne = ", params$profiles[row, "Ne"]) )
+    row <- row+1
+  }
+  legend("topright", legend= unlist(names), fill = cols)
+
+
+}
+```
+

@@ -1,0 +1,13 @@
+.center {
+  margin: 0 auto;
+  width: 100%;
+  display:block;
+}
+
+iframe {
+  margin: 0 auto;
+  background-color: #777;
+  display:block;
+  width: 650px;
+  height: 390px;
+}
