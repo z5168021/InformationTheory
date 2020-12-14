@@ -4,7 +4,7 @@ library(shinyBS)
 source("./R/get_fasta.R")
 uni <- fluidPage(
   titlePanel("Uniform"),
-  p('This type of distribution suggests that the population is symmetrical and all possible values are equally likely to occur.'),
+  p('This sample population contains a single unique sample to produce a uniform distribution. There are 35 occurrences of the sequence AATGTGGATATT.'),
   plotOutput('uniform_plot'),
   bsCollapse(id = "pop1", open = 'Panel 1',
              bsCollapsePanel("View Fasta file", 
@@ -15,7 +15,7 @@ uni <- fluidPage(
   )
 even <- fluidPage(
   titlePanel("Even Distribution"),
-  p('This type of distribution suggests that there is a symmetric and equal division and sharing of values of data.'),
+  p('This sample population contains equal occurrences of three different haplotypes to produce an even distribution. The different sequences occur equally with 12 counts each.'),
   plotOutput('evenDistribution_plot'),
   bsCollapse(id = "pop1",
              bsCollapsePanel("View Fasta file", get_fasta('evenDistribution')
@@ -27,7 +27,7 @@ even <- fluidPage(
 single <- fluidPage(
   
   titlePanel("Single Outlier"),
-  p('This type of distribution suggests that there is a data point which has a significant difference in value when comparing other sets of data, often excluded to avoid any error during statistical analysis.'),
+  p('This sample population contains four different haplotypes. Three occur with the same counts while a single sequence occurs at a much lower frequency of once. This distribution contains the single outlier haplotype AATTTCGATGAA.'),
   plotOutput('singleOutlier_plot'),
   bsCollapse(id = "pop1", open = 'Panel 1',
              bsCollapsePanel("View Fasta file", 
@@ -39,7 +39,7 @@ single <- fluidPage(
 )
 random <- fluidPage(
   titlePanel("Random Distribution"),
-  p('This type of distribution suggests that all values that are distributed are asymmetric and randomly scattered with no visible patterns or trends. '),
+  p('This sample population contains many different haplotypes with varying counts to produce a random distribution.'),
   plotOutput('randomDistribution_plot'),
   bsCollapse(id = "pop1",
              bsCollapsePanel("View Fasta file", 
