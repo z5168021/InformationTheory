@@ -17,7 +17,7 @@ than access to the internet. The web address is:
  https://evolutionaryecology.shinyapps.io/learningEE
 
 ### Hosting from a private server.
-The product is on GitHub at https://gitlab.cse.unsw.EDU.AU/z5168021/binf6112-project.git
+The product is on GitHub at https://github.com/z5168021/InformationTheory
 Please contact z5168021@student.unsw.edu.au or z5164906@student.unsw.edu.au if you
 have any questions regarding setting up and accessing the web app.
 
