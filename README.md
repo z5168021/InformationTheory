@@ -21,11 +21,11 @@ The product is on GitHub at https://github.com/z5168021/InformationTheory
 Please contact z5168021@student.unsw.edu.au or z5164906@student.unsw.edu.au if you
 have any questions regarding setting up and accessing the web app.
 
-To host the app on your own device you must run it through R-Studio. Once in the application
-you can select the New Project field from the File drop down menu. After selecting the link a
-module will appear, select the Version Control option and then Git Repository. Enter the URL
-of the repository and select Create Project. R-Studio will clone all files into the directory
-specified.
+To host the app on your own device you must run it through R-Studio (https://rstudio.com/products/rstudio/download/). 
+Once in the applicationyou can select the New Project field from the File drop down menu. After 
+selecting the link amodule will appear, select the Version Control option and then Git Repository. 
+Enter the URLof the repository and select Create Project. R-Studio will clone all files into the 
+directory specified.
 
 Once the repository is cloned the following libraries/packages must be installed:
 Install the following packages
